@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import type { AppDispatch, RootState } from '../app/store';
-import { clearCartAsync, removeItemAsync } from '../features/cart/cartThunks';
+import { addItemAsync, clearCartAsync, removeItemAsync, removeOneItemAsync } from '../features/cart/cartThunks';
 import { useDispatch } from 'react-redux';
 
 const Header: React.FC = () => {
@@ -64,6 +64,30 @@ const Header: React.FC = () => {
                         <p className="text-sm text-gray-500">
                           Color: {item.colorCode}, Almacenamiento: {item.storageCode}
                         </p>
+                        <div className="flex gap-2 mt-1 items-center">
+                          <button
+                            onClick={() =>
+                              dispatch(
+                                removeOneItemAsync({ id: item.id, colorCode: item.colorCode, storageCode: item.storageCode })
+                              )
+                            }
+
+                            className="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded hover:bg-gray-200"
+                          >
+                            -
+                          </button>
+                          <span className="text-sm">{item.cantidad}</span>
+                          <button
+                            onClick={() =>
+                              dispatch(
+                                addItemAsync({ id: item.id, colorCode: item.colorCode, storageCode: item.storageCode })
+                              )
+                            }
+                            className="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded hover:bg-gray-200"
+                          >
+                            +
+                          </button>
+                        </div>
                       </div>
                       <button
                         onClick={() =>

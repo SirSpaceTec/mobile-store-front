@@ -12,11 +12,12 @@ export const fetchCart = () => async (dispatch: AppDispatch) => {
   dispatch(setCartCount(data.length));
 };
 
-export const addItemAsync = (payload: { id: string; colorCode: number; storageCode: number }) =>
+export const addItemAsync = (payload: { id: string; colorCode: number; storageCode: number }) => 
   async (dispatch: AppDispatch) => {
-    await addToCart(payload);
+    await addToCart(payload); 
     dispatch(fetchCart());
   };
+
 
 
 export const clearCartAsync = () => async (dispatch: AppDispatch) => {
@@ -24,6 +25,15 @@ export const clearCartAsync = () => async (dispatch: AppDispatch) => {
   dispatch(fetchCart());
 };
 
+export const removeOneItemAsync = (payload: { id: string; colorCode: number; storageCode: number }) =>
+  async (dispatch: AppDispatch) => {
+    await fetch('/api/cart/one', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    dispatch(fetchCart()); 
+  };
 
 
 export const removeItemAsync = (payload: {
