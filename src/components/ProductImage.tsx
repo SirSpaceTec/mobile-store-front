@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 
 interface Props {
   productId: string;
+  sizeClass?: string;
 }
 
-const ProductImage: React.FC<Props> = ({ productId }) => {
+const ProductImage: React.FC<Props> = ({ productId, sizeClass = "w-32 h-32" }) => {
   const [src, setSrc] = useState(`http://localhost:8080/phones/${productId}.jpg`);
 
   const handleError = () => {
@@ -19,7 +20,7 @@ const ProductImage: React.FC<Props> = ({ productId }) => {
     <img
       src={src}
       alt={`Imagen producto ${productId}`}
-      className="w-32 h-32 object-contain"
+      className={`${sizeClass} object-contain`}
       onError={handleError}
     />
   );

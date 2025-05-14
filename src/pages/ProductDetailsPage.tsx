@@ -46,7 +46,7 @@ const ProductDetailsPage: React.FC = () => {
 
       <div className="grid md:grid-cols-2 gap-8 mt-6">
         <div className="flex justify-center items-center">
-          <ProductImage productId={product.id} />
+          <ProductImage sizeClass='w-4/6 h-4/6' productId={product.id} />
         </div> 
 
 
