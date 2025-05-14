@@ -16,7 +16,6 @@ const ProductListPage: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { items, loading, error } = useSelector((state: RootState) => state.product);
 
-  // Filtros iniciales desde localStorage
   const getInitialFilters = (): StoredFilters => {
     const saved = localStorage.getItem(FILTERS_KEY);
     if (saved) {
@@ -37,7 +36,6 @@ const ProductListPage: React.FC = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  // Guardar filtros en localStorage al cambiar
   useEffect(() => {
     const filters: StoredFilters = { search, sortOrder, selectedBrand };
     localStorage.setItem(FILTERS_KEY, JSON.stringify(filters));

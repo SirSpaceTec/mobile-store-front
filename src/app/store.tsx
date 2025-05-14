@@ -11,7 +11,6 @@ export const store = configureStore({
   },
 });
 
-// 🔁 Guardar automáticamente el estado del carrito
 store.subscribe(() => {
   const state = store.getState();
   localStorage.setItem(CART_KEY, JSON.stringify(state.cart));

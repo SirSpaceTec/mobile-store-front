@@ -32,6 +32,6 @@ export const removeItemAsync = (payload: {
   storageCode: number;
 }) => async (dispatch: AppDispatch) => {
   await removeFromCart(payload);
-  dispatch(fetchCart()); // 🔁 Actualiza Redux con el carrito actualizado
+  dispatch(fetchCart()); 
 };
 

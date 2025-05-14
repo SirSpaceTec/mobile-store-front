@@ -53,18 +53,11 @@ const ProductDetailsPage: React.FC = () => {
       <Link to="/" className="text-blue-600 hover:underline text-sm">&larr; Volver</Link>
 
       <div className="grid md:grid-cols-2 gap-8 mt-6">
-        {/* Imagen */}
         <div className="flex justify-center items-center">
           <ProductImage productId={product.id} />
-
-        {/* <div className="w-24 h-24 bg-blue-100 text-blue-800 rounded flex items-center justify-center font-semibold text-lg">
-  {product.marca.charAt(0)}
-</div> */}
-
         </div> 
 
 
-        {/* Detalles */}
         <div>
           <h2 className="text-2xl font-bold text-gray-800 mb-2">{product.marca} {product.modelo}</h2>
           <p className="text-xl text-blue-600 font-semibold mb-4">{product.precio.toFixed(2)} €</p>

@@ -28,7 +28,6 @@ const Header: React.FC = () => {
         </button>
       </header>
 
-      {/* Panel lateral del carrito */}
       {showCart && (
         <div className="fixed inset-0 bg-gray-400 z-20" style={{ backgroundColor: 'rgba(0,0,0,0.1)' }} onClick={() => setShowCart(false)}>
           <div
