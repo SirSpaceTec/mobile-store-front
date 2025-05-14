@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import type { AppDispatch, RootState } from '../app/store';
 import { clearCartAsync, removeItemAsync } from '../features/cart/cartThunks';
@@ -8,7 +8,12 @@ import { useDispatch } from 'react-redux';
 const Header: React.FC = () => {
   const count = useSelector((state: RootState) => state.cart.count);
   const cartItems = useSelector((state: RootState) => state.cart.items);
+
   const [showCart, setShowCart] = useState(false);
+
+  const location = useLocation();
+  const isDetail = location.pathname.startsWith('/product/');
+
   const dispatch = useDispatch<AppDispatch>();
 
   return (
@@ -18,6 +23,11 @@ const Header: React.FC = () => {
           <Link to="/" className="text-2xl font-bold ">
             <span className='text-gray-600'><span className='text-3xl'>M</span>obile</span><span className='text-violet-600'><span className='text-3xl'>S</span>tore</span>
           </Link>
+          {isDetail && (
+            <nav className="text-sm text-gray-500 ml-10">
+              <Link to="/" className="hover:underline">Inicio</Link> <span className="mx-1">{'>'}</span> <span>Detalles del producto</span>
+            </nav>
+          )}
 
         </div>
         <button

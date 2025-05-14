@@ -15,9 +15,6 @@ const ProductDetailsPage: React.FC = () => {
   const [colorCode, setColorCode] = useState(1);
   const [storageCode, setStorageCode] = useState(1);
 
-  const isDetail = location.pathname.startsWith('/product/');
-
-
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -45,11 +42,6 @@ const ProductDetailsPage: React.FC = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      {isDetail && (
-        <nav className="text-sm text-gray-500 mb-3">
-          <Link to="/" className="hover:underline">Inicio</Link> / <span>Detalles del producto</span>
-        </nav>
-      )}
       <Link to="/" className="text-blue-600 hover:underline text-sm">&larr; Volver</Link>
 
       <div className="grid md:grid-cols-2 gap-8 mt-6">
